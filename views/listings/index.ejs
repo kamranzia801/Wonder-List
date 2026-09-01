@@ -1,23 +1,35 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wounder List</title>
-</head>
-
-<body>
+<% layout("layouts/boilerplate") -%>
     <h3>All Listings</h3>
-    <ul>
-        <% for(listing of listings){%>
-            <li>
-                <a href="/listings/<%=listing._id%>">
-                    <%=listing.title%>
-                </a>
-            </li>
-        <% } %>
-    </ul>
-</body>
 
-</html>
+    <body>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+            <% for(listing of listings){%>
+                <div class="card cols">
+                    <a href="/listings/<%=listing._id%>" style="text-decoration: none; display: inline; color: black;">
+                        <img src="<%= listing.image.url%>" class="card-img-top" alt="<%=listing.image.filename%>">
+                        <div class="card-img-overlay"></div>
+                    </a>
+                    <div class="card-body">
+                        <a href="/listings/<%=listing._id%>"
+                            style="text-decoration: none; display: inline; color: black;">
+                            <p class="card-text " style="font-weight:700;">
+                                <%=listing.title%>
+                            </p>
+                            <p class="card-text">
+                                <%=listing.description%>
+                            </p>
+                            <p class="card-text">&#8377;<%=listing.price.toLocaleString("en-IN")%>
+                            </p>
+                        </a>
+                        <!-- <div class="buttons">
+                            <form action="/listings/<%=listing._id%>/edit" method="get"><button>Edit</button></form>
+                            <form action="/listings/<%=listing._id%>?_method=DELETE" method="POST">
+                                <button>Delete</button>
+                            </form>
+                        </div> -->
+                    </div>
+                </div>
+                <% } %>
+
+        </div>
+    </body>

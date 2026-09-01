@@ -1,0 +1,31 @@
+<% layout("layouts/boilerplate") -%>
+<body>
+    <h3>Create a New Listing</h3>
+    <form action="/listings/<%=indlisting._id%>?_method=PUT" method="POST" >
+        <div >
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" value="<%=indlisting.title%>" name="indlisting[title]">
+        </div>
+        <div>
+            <label for="description" class="form-label">Description</label>
+            <input type="text" class="form-control" value="<%-indlisting.description%>" name="indlisting[description]">
+        </div>
+        <div>
+            <label for="image" class="form-label">Image URL</label>
+            <input class="form-control" type="text" value="<%-indlisting.image.url || ''%>" name="indlisting[image][url]">
+        </div>
+        <div>
+            <label for="price" class="form-label">Price</label>
+            <input class="form-control" type="number" value="<%-indlisting.price%>" name="indlisting[price]">
+        </div>
+        <div>
+            <label for="location" class="form-label">Location</label>
+            <input class="form-control" type="text" value="<%-indlisting.location%>" name="indlisting[location]">
+        </div>
+        <div>
+            <label for="country" class="form-label">Country</label>
+            <input class="form-control" type="text" value="<%-indlisting.country%>" name="indlisting[country]">
+        </div>
+        <button type="submit" class="btn btn-primary">Enter</button>
+    </form>
+</body>

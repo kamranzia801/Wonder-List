@@ -1,0 +1,111 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.navbar {
+    height: 5rem;
+    background-color: white;
+}
+
+.bx-compass {
+    font-size: 2.5rem;
+    color: #fe3333;
+}
+
+.fa-brands {
+    font-size: 2rem;
+}
+
+footer {
+    margin: 10px;
+    padding: 10px;
+    text-align: center;
+}
+
+.f-info {
+    height: 3rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+}
+
+.f-info a i{
+    color: #fe3333;
+}
+
+.f-info-links a {
+    text-decoration: none;
+    color: grey;
+    margin: 10px 20px;
+}
+
+.f-info-links a:hover {
+    text-decoration: underline;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.buttons button{
+    color: #fe3333;
+    background-color: white;
+    border: none;
+}
+
+.card{
+    border: none ;
+    margin-bottom: 2rem;
+}
+
+.card-img-top{
+    border-radius: 1rem;
+    width: 100%;
+    object-fit: cover !important;
+    height: 20rem;
+}
+
+.card-img-overlay{
+    transition: all 0.5s linear;
+    opacity: 0;
+}
+.card-img-overlay:hover{
+    opacity: 0.3;
+    background-color: white;
+}
+
+/* new.ejs */
+
+.form-label{
+    margin: 0.1rem 0 ;
+    font-size: 1.2rem;
+    font-weight: 300;
+}
+
+.form-control{
+    margin: 0.3rem 0;
+}
+
+.btn-primary{
+    margin: 1rem 0;
+    padding: 10px 20px;
+}
+
+body{
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container{
+    flex: 1;
+}
+
+.btn{
+    background-color: #fe3333;
+    border: none;
+}

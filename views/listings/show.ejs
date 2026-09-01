@@ -1,32 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout("layouts/boilerplate") -%>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Wounder List || <%=indlisting.title%>
-    </title>
-</head>
-
-<body>
-    <h3>Listing Details :</h3>
-    <ul>
-        <li>
-            <%=indlisting.title%>
-        </li>
-        <li>
-            <%=indlisting.description%>
-        </li>
-        <li>
-            <%=indlisting.price.toLocaleString("en-IN")%>
-        </li>
-        <li>
-            <%=indlisting.location%>
-        </li>
-        <li>
-            <%=indlisting.country%>
-        </li>
-    </ul>
-</body>
-
-</html>
+    <body>
+        <h3>Listing Details :</h3>
+        <div class="card">
+            <img src="<%=indlisting.image.url%>" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">
+                    <b>
+                        <%=indlisting.title%>
+                    </b> <br>
+                    <%=indlisting.description%>
+                        <br>
+                        &#8377;<%=indlisting.price.toLocaleString("en-IN")%>
+                            <br>
+                            <%=indlisting.location%>
+                                <br>
+                                <%=indlisting.country%>
+                                    <br>
+                                    <form style="display: inline-block;" action="/listings/<%=indlisting._id%>/edit"
+                                        method="get"><button class="btn" style="color: white;">Edit</button></form>
+                                    <form style="display: inline-block;"
+                                        action="/listings/<%=indlisting._id%>?_method=DELETE" method="POST">
+                                        <button style="color: white;" class="btn">Delete</button>
+                                    </form>
+                </p>
+            </div>
+        </div>
+    </body>
