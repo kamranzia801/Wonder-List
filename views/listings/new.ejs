@@ -1,30 +1,31 @@
 <% layout("layouts/boilerplate") -%>
 <body>
     <h3>Create a New Listing</h3>
-    <form action="/listings" method="POST" style="text-align: center;">
+    <form action="/listings" method="POST" style="text-align: center;" novalidate class="needs-validation">
         <div >
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" placeholder="Enter Title" name="listing[title]">
+            <input type="text" class="form-control" placeholder="Enter Title" name="listing[title]" required>
+            <div class="valid-feedback" style="text-align: start;">Title looks good!</div>
         </div>
         <div>
             <label for="description" class="form-label">Description</label>
-            <input type="text" class="form-control" placeholder="Enter Description" name="listing[description]">
+            <input type="text" class="form-control" placeholder="Enter Description" name="listing[description]" required>
         </div>
         <div>
             <label for="image" class="form-label">Image URL</label>
-            <input class="form-control" type="text" placeholder="Enter Image Url/Link" name="listing[image]">
+            <input class="form-control" type="text" placeholder="Enter Image Url/Link" name="listing[image]" required>
         </div>
         <div>
             <label for="price" class="form-label">Price</label>
-            <input class="form-control" type="number" placeholder="Enter PRICE" name="listing[price]">
+            <input class="form-control" type="number" placeholder="Enter PRICE" name="listing[price]" required>
         </div>
         <div>
             <label for="location" class="form-label">Location</label>
-            <input class="form-control" type="text" placeholder="Enter Location" name="listing[location]">
+            <input class="form-control" type="text" placeholder="Enter Location" name="listing[location]" required>
         </div>
         <div>
             <label for="country" class="form-label">Country</label>
-            <input class="form-control" type="text" placeholder="Enter Country" name="listing[country]">
+            <input class="form-control" type="text" placeholder="Enter Country" name="listing[country]" required>
         </div>
         <button type="submit" class="btn btn-primary">Enter</button>
     </form>

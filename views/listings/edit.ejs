@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate") -%>
 <body>
     <h3>Create a New Listing</h3>
-    <form action="/listings/<%=indlisting._id%>?_method=PUT" method="POST" >
+    <form action="/listings/<%=indlisting._id%>?_method=PUT" method="POST" novalidate class="needs-validation" >
         <div >
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" value="<%=indlisting.title%>" name="indlisting[title]">
@@ -12,15 +12,15 @@
         </div>
         <div>
             <label for="image" class="form-label">Image URL</label>
-            <input class="form-control" type="text" value="<%-indlisting.image.url || ''%>" name="indlisting[image][url]">
+            <input class="form-control" type="text" value="<%-indlisting.image.toString()%>" name="indlisting[image]">
         </div>
         <div>
             <label for="price" class="form-label">Price</label>
-            <input class="form-control" type="number" value="<%-indlisting.price%>" name="indlisting[price]">
+            <input class="form-control" type="number" value="<%-indlisting.price%>" name="indlisting[price]" required min="0">
         </div>
         <div>
             <label for="location" class="form-label">Location</label>
-            <input class="form-control" type="text" value="<%-indlisting.location%>" name="indlisting[location]">
+            <input class="form-control" type="text" value="<%-indlisting.location%>" name="indlisting[location]"required>
         </div>
         <div>
             <label for="country" class="form-label">Country</label>

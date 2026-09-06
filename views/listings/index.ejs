@@ -6,7 +6,7 @@
             <% for(listing of listings){%>
                 <div class="card cols">
                     <a href="/listings/<%=listing._id%>" style="text-decoration: none; display: inline; color: black;">
-                        <img src="<%= listing.image.url%>" class="card-img-top" alt="<%=listing.image.filename%>">
+                        <img src="<%= listing.image%>" class="card-img-top" alt="property image">
                         <div class="card-img-overlay"></div>
                     </a>
                     <div class="card-body">
@@ -18,7 +18,7 @@
                             <p class="card-text">
                                 <%=listing.description%>
                             </p>
-                            <p class="card-text">&#8377;<%=listing.price.toLocaleString("en-IN")%>
+                            <p class="card-text"> &#8377; <%=listing.price.toLocaleString("en-IN")%>
                             </p>
                         </a>
                         <!-- <div class="buttons">
