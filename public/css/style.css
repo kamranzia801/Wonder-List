@@ -106,6 +106,24 @@ body{
 }
 
 .btn{
+    color: white;
     background-color: #fe3333;
     border: none;
+}
+.btn:hover{
+    color: white;
+    background-color: #333;
+    border: none;
+}
+
+/* reviews */
+
+#review-row{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+#review-row div{
+    margin: 1rem;
+    padding: 0.2rem;
 }

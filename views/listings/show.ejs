@@ -18,12 +18,53 @@
                                 <%=indlisting.country%>
                                     <br>
                                     <form style="display: inline-block;" action="/listings/<%=indlisting._id%>/edit"
-                                        method="get"><button class="btn" style="color: white;">Edit</button></form>
+                                        method="get"><button class="btn">Edit</button></form>
                                     <form style="display: inline-block;"
                                         action="/listings/<%=indlisting._id%>?_method=DELETE" method="POST">
                                         <button style="color: white;" class="btn">Delete</button>
                                     </form>
                 </p>
+            </div>
+        </div>
+        <div>
+            <hr>
+            <h4>Leave a Review</h4>
+            <form action="/listings/<%=indlisting._id%>/reviews" method="post" novalidate class="needs-validation">
+                <div>
+                    <label for="rating" class="form-label">Rating</label>
+                    <input type="range" min="1" max="5" id="rating" class="form-range" name="review[rating]" required>
+                </div>
+                <div>
+                    <label for="comment" class="form-label">Comment</label>
+                    <textarea name="review[comment]" id="comment" rows="5" cols="30" class="form-control"
+                        required></textarea>
+                </div>
+                <button class="btn" type="submit">Submit</button>
+            </form>
+            <div class="card">
+                <hr>
+                <p> <b> All reviews </b></p>
+                    <div class="row mb-3" id="review-row" >
+                        <% for(review of indlisting.reviews){ %>
+                            <div class="card col-5 mb-3 ms-1" style="border: 1px solid black;">
+                                <div class="card-body">
+                                <h5 class="card-title">Kamran Zia</h5>
+                                <hr>
+                                <p class="card-text"><%=review.comment%></p>
+                                <p class="card-text"><%=review.rating%>
+                                    <%if(review.rating===1) {%>
+                                        star
+                                    <% }else{ %>
+                                        stars
+                                    <% } %>
+                                    </p>
+                                </div>
+                                <form class="m-3" action="/listings/<%=indlisting._id%>/reviews/<%=review._id%>?_method=DELETE" method="Post">
+                                    <button class="btn btn-sm btn-dark">Delete</button>
+                                </form>
+                            </div>
+                        <% } %>
+                    </div>
             </div>
         </div>
     </body>
