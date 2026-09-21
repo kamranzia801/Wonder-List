@@ -24,11 +24,11 @@ module.exports.saveRedirectUrl = (req,res,next)=>{
 }
 
 module.exports.isOwner = async(req,res,next)=>{
-    let { id } = await req.params;
-    let listing = await listing.findById(id);
-    if (userStatus && !listing.owner._id.equals(userStatus._id)) {
+    let { id } = req.params;
+    let listingDoc = await listing.findById(id);
+    if (listingDoc && !listingDoc.owner.equals(req.user._id)) {
         req.flash("error", "you don't have prmission to edit this listing!");
-        return res.redirect(`/listings${id}`);
+        return res.redirect(`/listings/${id}`);
     }
     next();
 }

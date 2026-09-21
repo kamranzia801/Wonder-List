@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate") -%>
 <body>
     <h3>Create a New Listing</h3>
-    <form action="/listings" method="POST" novalidate class="needs-validation" style="text-align: center;">
+    <form action="/listings" method="POST" novalidate class="needs-validation" style="text-align: center;" enctype="multipart/form-data">
         <div >
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" placeholder="Enter Title" name="listing[title]" required>
@@ -11,9 +11,13 @@
             <label for="description" class="form-label">Description</label>
             <input type="text" class="form-control" placeholder="Enter Description" name="listing[description]" required>
         </div>
-        <div>
+        <!-- <div>
             <label for="image" class="form-label">Image URL</label>
             <input class="form-control" type="text" placeholder="Enter Image Url/Link" name="listing[image]" required>
+        </div> -->
+        <div>
+            <label for="image" class="form-label">Upload Image</label>
+            <input class="form-control" type="file" name="listing[image]" required>
         </div>
         <div>
             <label for="price" class="form-label">Price</label>
