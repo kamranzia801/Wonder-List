@@ -32,7 +32,7 @@ footer {
     align-items: center;
 }
 
-.f-info a i{
+.f-info a i {
     color: #fe3333;
 }
 
@@ -46,71 +46,74 @@ footer {
     text-decoration: underline;
 }
 
-.buttons{
+.buttons {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-.buttons button{
+
+.buttons button {
     color: #fe3333;
     background-color: white;
     border: none;
 }
 
-.card{
-    border: none ;
+.card {
+    border: none;
     margin-bottom: 2rem;
 }
 
-.card-img-top{
+.card-img-top {
     border-radius: 1rem;
     width: 100%;
     object-fit: cover !important;
     height: 20rem;
 }
 
-.card-img-overlay{
+.card-img-overlay {
     transition: all 0.5s linear;
     opacity: 0;
 }
-.card-img-overlay:hover{
+
+.card-img-overlay:hover {
     opacity: 0.3;
     background-color: white;
 }
 
 /* new.ejs */
 
-.form-label{
-    margin: 0.1rem 0 ;
+.form-label {
+    margin: 0.1rem 0;
     font-size: 1.2rem;
     font-weight: 300;
 }
 
-.form-control{
+.form-control {
     margin: 0.3rem 0;
 }
 
-.btn-primary{
+.btn-primary {
     margin: 1rem 0;
     padding: 10px 20px;
 }
 
-body{
+body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 }
 
-.container{
+.container {
     flex: 1;
 }
 
-.btn{
+.btn {
     color: white;
     background-color: #fe3333;
     border: none;
 }
-.btn:hover{
+
+.btn:hover {
     color: white;
     background-color: #333;
     border: none;
@@ -118,12 +121,27 @@ body{
 
 /* reviews */
 
-#review-row{
+#review-row {
     display: flex;
     justify-content: space-around;
     align-items: center;
 }
-#review-row div{
+
+#review-row div {
     margin: 1rem;
     padding: 0.2rem;
+}
+
+/* map */
+
+#menu {
+    position: absolute;
+    background: #efefef;
+    padding: 10px;
+    font-family: 'Open Sans', sans-serif;
+}
+
+#map {
+    height: 320px;
+    width: 100%;
 }

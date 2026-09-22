@@ -87,4 +87,12 @@
                         </div>
                     </div>
         </div>
+        <div class="mb-3 ">
+            <h3>Where you will be</h3>
+            <div id="map"
+                data-map-token="<%= process.env.MAP_TOKEN || '' %>"
+                data-location="<%= indlisting.location %>, <%= indlisting.country %>"></div>
+        </div>
+
+        <script src="/js/map.js"></script>
     </body>

@@ -7,17 +7,16 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
             <div class="navbar-nav">
-                <a class="nav-link" aria-current="page" href="/listings">Home</a>
-                <a class="nav-link" href="/listings">All Listings</a>
-                <a class="nav-link" href="/listings/new">Add New Listing</a>
+                <a class="nav-link" href="/listings">Expolore</a>
             </div>
             <div class="navbar-nav ms-auto mr-5">
+                <a class="nav-link" href="/listings/new">Add New Listing</a>
                 <% if(!userStatus){ %>
-                    <a class="nav-link" aria-current="page" href="/signup">Sign Up</a>
-                    <a class="nav-link" href="/Login">Log In</a>
+                    <a class="nav-link" aria-current="page" href="/signup"><b>Sign Up</b></a>
+                    <a class="nav-link" href="/login?redirect=<%= encodeURIComponent(currentUrl) %>"><b>Log in</b></a>
                     <% } %>
                         <% if(userStatus){ %>
-                            <a class="nav-link" href="/logout">Log Out</a>
+                            <a class="nav-link" href="/logout"><b>Log Out</b></a>
                             <% } %>
             </div>
         </div>

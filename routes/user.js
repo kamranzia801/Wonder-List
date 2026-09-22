@@ -14,6 +14,9 @@ router.route("/signup")
 
 router.route("/login")
     .get((req, res) => {
+        if (typeof req.query.redirect === "string" && req.query.redirect.startsWith("/") && !req.query.redirect.startsWith("//")) {
+            req.session.redirectUrl = req.query.redirect;
+        }
         res.render("./users/login.ejs");
     })
     .post(saveRedirectUrl, passport.authenticate("local", { failureRedirect: "/login", failureFlash: true }), controllerUser.login);

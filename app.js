@@ -56,6 +56,7 @@ app.use((req, res, next) => {
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     res.locals.userStatus = req.user;
+    res.locals.currentUrl = req.originalUrl;
     next();
 })
 
@@ -71,9 +72,9 @@ async function main() {
 
 //home route
 
-app.get("/", (req, res) => {
-    res.send(`home page`);
-});
+// app.get("/", (req, res) => {
+//     res.send(`home page`);
+// });
 
 //for initialize localhost
 

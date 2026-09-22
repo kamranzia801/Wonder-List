@@ -1,7 +1,7 @@
 <% layout("layouts/boilerplate") -%>
 <body>
     <h3>Create a New Listing</h3>
-    <form action="/listings/<%=indlisting._id%>?_method=PUT" method="POST" novalidate class="needs-validation" >
+    <form action="/listings/<%=indlisting._id%>?_method=PUT" method="POST" novalidate class="needs-validation" enctype="multipart/form-data">
         <div >
             <label for="title" class="form-label">Title</label>
             <input type="text" class="form-control" value="<%=indlisting.title%>" name="listing[title]">
@@ -10,9 +10,12 @@
             <label for="description" class="form-label">Description</label>
             <input type="text" class="form-control" value="<%-indlisting.description%>" name="listing[description]">
         </div>
+        <div class="mb-3">
+            <img src="<%= originalImageUrl %>" alt="">
+        </div>
         <div>
-            <label for="image" class="form-label">Image URL</label>
-            <input class="form-control" type="text" value="<%-indlisting.image.toString()%>" name="listing[image]">
+            <label for="image" class="form-label">Upload New Image</label>
+            <input class="form-control" type="file" name="listing[image]">
         </div>
         <div>
             <label for="price" class="form-label">Price</label>

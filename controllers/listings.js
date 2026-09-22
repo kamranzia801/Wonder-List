@@ -37,13 +37,21 @@ module.exports.editGet = async (req, res) => {
         req.flash("error", "This page you requested for doesn't Exist!");
         res.redirect("/listings");
     }
-    res.render("./listings/edit.ejs", { indlisting });
+    let originalImageUrl = indlisting.image.url;
+    originalImageUrl = originalImageUrl.replace("/upload","/upload/w_250");
+    res.render("./listings/edit.ejs", { indlisting , originalImageUrl });
 }
 
 module.exports.update = async (req, res) => {
     let { id } = await req.params;
+    let listing = await listing.findByIdAndUpdate(id, { ...req.body.listing });
+    if(typeof req.file !== "undefined"){
+        let url = req.file.path
+        let filename = req.file.filename
+        listing.image = { filename, url }
+        await listing.save();
+    }
     req.flash("success", "Listing Updated Successfully!");
-    await listing.findByIdAndUpdate(id, { ...req.body.listing });
     res.redirect(`/listings${id}`);
 }
 
