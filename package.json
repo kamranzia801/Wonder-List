@@ -1,18 +1,23 @@
 {
+  "engines":{
+    "node": "24.18.0"
+  },
   "name": "wonder-list",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
+    "migrate:atlas": "node init/migrate.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
-  "author": "",
+  "author": "Kamran Zia",
   "license": "ISC",
   "type": "commonjs",
   "dependencies": {
     "cloudinary": "^1.41.3",
     "connect-flash": "^0.1.1",
+    "connect-mongo": "^6.0.0",
     "cookie-parser": "^1.4.7",
     "dotenv": "^18.0.1",
     "ejs": "^6.0.1",
@@ -21,6 +26,7 @@
     "express-session": "^1.19.0",
     "joi": "^18.2.8",
     "method-override": "^3.0.0",
+    "mongodb": "^7.6.0",
     "mongoose": "^9.9.4",
     "multer": "^2.4.0",
     "multer-storage-cloudinary": "^4.0.0",

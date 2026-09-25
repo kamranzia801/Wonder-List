@@ -1,8 +1,29 @@
 <% layout("layouts/boilerplate") -%>
-    <h3>All Listings</h3>
+        <!-- <h3>All Listings</h3> -->
+         <div id="filters">
+            <div class="filter">
+                <i class="fa-solid fa-fire f-icon"></i>
+                <b>Trending</b>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-bed f-icon"></i>
+                <b>Rooms</b>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-mountain-city f-icon"></i>
+                <b>Iconic Cities</b>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-mountain-sun f-icon"></i>
+                <b>Mountains</b>
+            </div>
+            <div class="filter">
+                <i class="fa-solid fa-person-swimming f-icon"></i>
+                <b>Amazing Pools</b>
+            </div>
 
-    <body>
-        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1">
+         </div>
+        <div class="row row-cols-lg-3 row-cols-md-2 row-cols-sm-1 mt-3">
             <% for(listing of listings){%>
                 <div class="card cols">
                     <a href="/listings/<%=listing._id%>" style="text-decoration: none; display: inline; color: black;">
@@ -32,4 +53,3 @@
                 <% } %>
 
         </div>
-    </body>

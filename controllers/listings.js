@@ -1,8 +1,18 @@
 const listing = require("../models/listing.js");
+const ExpressError = require("../utils/ExpressError.js");
 
 module.exports.index = async (req, res) => {
-    const listings = await listing.find({});
-    res.render("listings/index.ejs", { listings });
+    const { search } = req.query;
+    const filter = search ? {
+        $or: [
+            { title: { $regex: search, $options: "i" } },
+            { description: { $regex: search, $options: "i" } },
+            { location: { $regex: search, $options: "i" } },
+            { country: { $regex: search, $options: "i" } }
+        ]
+    } : {};
+    const listings = await listing.find(filter);
+    res.render("listings/index.ejs", { listings, search: search || "" });
 }
 
 module.exports.new = async (req, res) => {
@@ -10,6 +20,9 @@ module.exports.new = async (req, res) => {
 }
 
 module.exports.create = async (req, res, next) => {
+    if (!req.file) {
+        throw new ExpressError(400, "An image is required for a listing.");
+    }
     let url = req.file.path
     let filename = req.file.filename
     const newlisting = new listing(req.body.listing);
@@ -25,7 +38,7 @@ module.exports.show = async (req, res) => {
     const indlisting = await listing.findById(id).populate({ path: "reviews", populate: { path: "author" } }).populate("owner");
     if (!indlisting) {
         req.flash("error", "This page you requested for doesn't Exist!");
-        res.redirect("/listings");
+        return res.redirect("/listings");
     }
     res.render("./listings/show.ejs", { indlisting });
 }
@@ -35,7 +48,7 @@ module.exports.editGet = async (req, res) => {
     const indlisting = await listing.findById(id).populate();
     if (!indlisting) {
         req.flash("error", "This page you requested for doesn't Exist!");
-        res.redirect("/listings");
+        return res.redirect("/listings");
     }
     let originalImageUrl = indlisting.image.url;
     originalImageUrl = originalImageUrl.replace("/upload","/upload/w_250");
@@ -52,7 +65,7 @@ module.exports.update = async (req, res) => {
         await listing.save();
     }
     req.flash("success", "Listing Updated Successfully!");
-    res.redirect(`/listings${id}`);
+    res.redirect(`/listings/${id}`);
 }
 
 module.exports.delete = async (req, res) => {

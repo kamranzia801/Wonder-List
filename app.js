@@ -1,11 +1,14 @@
-if(process.env.NODE_ENV != "production"){
+if (process.env.NODE_ENV != "production") {
     require("dotenv").config();
     // console.log(process.env.SECRET);
 }
 
+const dbUrl = process.env.ATLAS_DB_URL;
 
 const express = require("express");
 const app = express();
+const dns = require("dns");
+dns.setServers(["1.1.1.1", "0.0.0.0"]);
 const mongoose = require("mongoose");
 const path = require("path");
 const methodOverride = require("method-override");
@@ -17,11 +20,10 @@ const userRouter = require("./routes/user.js");
 const cookieParser = require("cookie-parser");
 const flash = require("connect-flash");
 const session = require("express-session");
+const MongoStore = require("connect-mongo").default;
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const User = require("./models/user.js");
-const multer = require("multer");
-const upload = multer({ dest: 'uploads/' })
 
 app.set("view engine", "ejs");
 app.set("views", path.join(__dirname, "views"))
@@ -31,8 +33,21 @@ app.engine("ejs", ejsMate);
 app.use(express.static(path.join(__dirname, "/public")));
 app.use(cookieParser());
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+        secret: process.env.SECRET
+    },
+    touchAfter: 24 * 3600,
+});
+
+store.on("error", (err) => {
+    console.log("error in mongo session store", err);
+})
+
 const sessionOptions = {
-    secret: "abc",
+    store: store,
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: {
@@ -57,6 +72,7 @@ app.use((req, res, next) => {
     res.locals.error = req.flash("error");
     res.locals.userStatus = req.user;
     res.locals.currentUrl = req.originalUrl;
+    res.locals.search = req.query.search || "";
     next();
 })
 
@@ -67,7 +83,7 @@ app.use("/", userRouter);
 main().then(() => { console.log(`connected to db`) }).catch(err => console.log(err));
 
 async function main() {
-    await mongoose.connect('mongodb://127.0.0.1:27017/wounderlist');
+    mongoose.connect(dbUrl).then(() => { console.log("success") }).catch((err) => { console.log("error", err) })
 }
 
 //home route

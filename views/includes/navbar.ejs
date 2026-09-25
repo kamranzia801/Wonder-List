@@ -9,6 +9,12 @@
             <div class="navbar-nav">
                 <a class="nav-link" href="/listings">Expolore</a>
             </div>
+            <div class="navbar-nav ms-auto">
+                <form class="d-flex search-form" role="search" action="/listings" method="get">
+                    <input class="form-control me-2" type="search" name="search" value="<%= search || '' %>" placeholder="Search listings" aria-label="Search listings" />
+                    <button class="btn btn-search" type="submit">Search</button>
+                </form>
+            </div>
             <div class="navbar-nav ms-auto mr-5">
                 <a class="nav-link" href="/listings/new">Add New Listing</a>
                 <% if(!userStatus){ %>

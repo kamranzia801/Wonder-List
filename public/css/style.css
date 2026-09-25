@@ -145,3 +145,99 @@ body {
     height: 320px;
     width: 100%;
 }
+
+ #filters{
+        margin-top: 1rem;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .filter{
+        text-align: center;
+        margin-right: 1rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 0.5rem;
+        opacity: 0.5;
+        transition: all 0.2s linear;
+    }
+    .filter:hover{
+        opacity: 1;
+        cursor: pointer;
+    }
+
+.search-form {
+    width: min(100%, 24rem);
+}
+
+.card-text {
+    overflow-wrap: anywhere;
+}
+
+@media (max-width: 991.98px) {
+    .navbar-collapse {
+        padding: 0.75rem 0;
+        background-color: white;
+    }
+
+    .navbar-nav.ms-auto {
+        margin-left: 0 !important;
+        margin-top: 0.5rem;
+    }
+
+    .search-form {
+        width: 100%;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    .navbar {
+        height: auto;
+        min-height: 4rem;
+    }
+
+    #filters {
+        gap: 0.75rem;
+        justify-content: space-between;
+    }
+
+    .filter {
+        flex: 1 1 5rem;
+        margin-right: 0;
+        min-width: 4.5rem;
+        font-size: 0.8rem;
+    }
+
+    .card-img-top {
+        height: 16rem;
+    }
+
+    #review-row {
+        display: block;
+    }
+
+    #review-row .card {
+        width: 100%;
+        margin-left: 0 !important;
+    }
+
+    #map {
+        height: 260px;
+    }
+
+    .f-info {
+        height: auto;
+        flex-wrap: wrap;
+        padding: 0.75rem 0;
+    }
+
+    .f-info-links a {
+        margin: 0 0.5rem;
+    }
+}
